@@ -320,12 +320,6 @@ namespace ZenithEngine
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public void SetZeroColors()
-        {
-            foreach (var t in tracks) t.SetZeroColors();
-        }
-
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public void Reset()
         {
             globalDisplayNotes.Unlink();

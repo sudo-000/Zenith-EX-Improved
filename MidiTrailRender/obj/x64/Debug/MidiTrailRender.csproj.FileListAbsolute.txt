@@ -1,0 +1,17 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\Languages\en\miditrail.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\MIDITrailRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\MIDITrailRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MidiTrailRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\AuraSelect.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\AuraSelect.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MidiTrailRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MidiTrailRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MidiTrailRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Debug\MIDITrailRender.pdb

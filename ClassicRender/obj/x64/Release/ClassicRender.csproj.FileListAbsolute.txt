@@ -1,0 +1,14 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\Languages\en\classic.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\ClassicRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\ClassicRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Release\ClassicRender.pdb

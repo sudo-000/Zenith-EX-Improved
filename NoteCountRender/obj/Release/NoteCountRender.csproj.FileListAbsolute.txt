@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\Any cpu\Release\Plugins\Languages\en\notecounter.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\Any cpu\Release\Plugins\NoteCountRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\Any cpu\Release\Plugins\NoteCountRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\NoteCountRender\obj\Release\NoteCountRender.pdb

@@ -1,0 +1,17 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\Languages\en\miditrail.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\MIDITrailRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Release\Plugins\MIDITrailRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MidiTrailRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\AuraSelect.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\AuraSelect.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MidiTrailRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MidiTrailRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MidiTrailRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\x64\Release\MIDITrailRender.pdb

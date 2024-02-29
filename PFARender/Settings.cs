@@ -22,7 +22,7 @@ namespace PFARender
         public double borderWidth = 1;
         public bool sameWidthNotes = false;
         public TopColor topColor = TopColor.Red;
-        public bool middleC = true;
+        public bool middleC = false;
         public bool blackNotesAbove = true;
 
         public float topBarR = .585f;

@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\Languages\en\textured.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\TexturedRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\TexturedRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\TexturedRender\obj\x64\Debug\TexturedRender.pdb

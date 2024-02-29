@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\Languages\en\scripted.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\ScriptedRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\ScriptedRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ScriptedRenderer\obj\x64\Debug\ScriptedRender.pdb

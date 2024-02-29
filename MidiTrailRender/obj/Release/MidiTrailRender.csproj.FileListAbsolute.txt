@@ -1,0 +1,5 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\Release\MidiTrailRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\Release\AuraSelect.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\Release\MIDITrailRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\MidiTrailRender\obj\Release\MIDITrailRender_MarkupCompile.lref

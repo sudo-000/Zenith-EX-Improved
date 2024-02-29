@@ -120,40 +120,6 @@ namespace ZenithEngine
             }
         }
 
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public void SetZeroColors()
-        {
-            for (int i = 0; i < 16; ++i)
-            {
-                //if (zeroTickTrkColors[i] != default)
-                //{
-                //    trkColors[i].left = zeroTickTrkColors[i].left;
-                //    trkColors[i].right = zeroTickTrkColors[i].right;
-                //}
-                //++i;
-                //if (zeroTickTrkColors[i] != null)
-                //{
-                //    trkColors[i].left = zeroTickTrkColors[i].left;
-                //    trkColors[i].right = zeroTickTrkColors[i].right;
-                //}
-                //++i;
-                //if (zeroTickTrkColors[i] != null)
-                //{
-                //    trkColors[i].left = zeroTickTrkColors[i].left;
-                //    trkColors[i].right = zeroTickTrkColors[i].right;
-                //}
-                //++i;
-                //if (zeroTickTrkColors[i] != null)
-                //{
-                //    trkColors[i].left = zeroTickTrkColors[i].left;
-                //    trkColors[i].right = zeroTickTrkColors[i].right;
-                //}
-                trkColors[i].left = zeroTickTrkColors[i].left;
-                trkColors[i].right = zeroTickTrkColors[i].right;
-                trkColors[i].isDefault = true;
-            }
-        }
-
         RenderSettings settings;
         public MidiTrack(int id, BufferByteReader reader, MidiFile file, RenderSettings settings)
         {

@@ -49,7 +49,7 @@ namespace ClassicRender
         #endregion
 
         #region Shaders
-        const string noteShaderVert = @"#version 330 compatibility
+        string noteShaderVert = @"#version 330 compatibility
 
 layout(location = 0) in vec3 position;
 layout(location = 1) in vec4 glColor;
@@ -63,7 +63,7 @@ void main()
     color = vec4(glColor.xyz + attrib.x, glColor.w);
 }
 ";
-        const string noteShaderFrag = @"#version 330 compatibility
+        string noteShaderFrag = @"#version 330 compatibility
  
 in vec4 color;
  
@@ -101,7 +101,7 @@ void main()
         int colorBufferID;
         int attribBufferID;
 
-        int quadBufferLength = 131072;
+        int quadBufferLength = 2048 * 64;
         double[] quadVertexbuff;
         float[] quadColorbuff;
         double[] quadAttribbuff;
@@ -131,10 +131,10 @@ void main()
             SettingsControl = new SettingsCtrl(this.settings);
             ((SettingsCtrl)SettingsControl).PaletteChanged += () => { ReloadTrackColors(); };
             PreviewImage = BitmapToImageSource(Properties.Resources.preview);
-            for (int i = 0; i < blackKeys.Length; ++i) blackKeys[i] = isBlackNote(i);
+            for (int i = 0; i < blackKeys.Length; i++) blackKeys[i] = isBlackNote(i);
             int b = 0;
             int w = 0;
-            for (int i = 0; i < keynum.Length; ++i)
+            for (int i = 0; i < keynum.Length; i++)
             {
                 if (blackKeys[i]) keynum[i] = b++;
                 else keynum[i] = w++;
@@ -264,7 +264,7 @@ void main()
 
             double deltaTimeOnScreen = NoteScreenTime;
             double pianoHeight = settings.pianoHeight;
-            // bool sameWidth = settings.sameWidthNotes;
+            bool sameWidth = settings.sameWidthNotes;
             for (int i = 0; i < 514; i++) keyColors[i] = Color4.Transparent;
             for (int i = 0; i < 256; i++) keyPressed[i] = false;
             double wdth;
@@ -304,28 +304,13 @@ void main()
                         wdth = 0.6f / (knmln - knmfn + 1);
                         int bknum = keynum[i] % 5;
                         double offset = wdth / 2;
-                        //if (bknum == 0 || bknum == 2)
-                        //{
-                        //    offset *= 1.3;
-                        //}
-                        //else if (bknum == 1 || bknum == 4)
-                        //{
-                        //    offset *= 0.7;
-                        //}
-                        switch (bknum)
+                        if (bknum == 0 || bknum == 2)
                         {
-                            case 0:
-                                offset *= 1.3;
-                                break;
-                            case 2:
-                                offset *= 1.3;
-                                break;
-                            case 1:
-                                offset *= 0.7;
-                                break;
-                            case 4:
-                                offset *= 0.7;
-                                break;
+                            offset *= 1.3;
+                        }
+                        else if (bknum == 1 || bknum == 4)
+                        {
+                            offset *= 0.7;
                         }
                         x1array[i] = (float)(keynum[_i] - knmfn) / (knmln - knmfn + 1) - offset;
                         wdtharray[i] = wdth;
@@ -959,21 +944,21 @@ void main()
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 64),
+                (IntPtr)(quadBufferPos * 2 * 8 * 4),
                 quadVertexbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Double, false, 16, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, colorBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 64),
+                (IntPtr)(quadBufferPos * 4 * 4 * 4),
                 quadColorbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 16, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, attribBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 64),
+                (IntPtr)(quadBufferPos * 2 * 8 * 4),
                 quadAttribbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Double, false, 16, 0);
@@ -985,7 +970,7 @@ void main()
 
         bool isBlackNote(int n)
         {
-            n %= 12;
+            n = n % 12;
             return n == 1 || n == 3 || n == 6 || n == 8 || n == 10;
         }
     }

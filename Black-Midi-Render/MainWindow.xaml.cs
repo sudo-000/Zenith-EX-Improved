@@ -172,7 +172,7 @@ namespace Zenith_MIDI
         bool foundOmniMIDI = true;
         bool OmniMIDIDisabled = false;
 
-        string defaultPlugin = "Classic";
+        string defaultPlugin = "PFA+";
 
         Settings metaSettings = new Settings();
 
@@ -182,8 +182,8 @@ namespace Zenith_MIDI
 
         DependenciesLoadingWindow loadDependenciesWindow = new DependenciesLoadingWindow();
 
-        const string Console_Title = "Zenith Modded (6.1.7)";
-        const string GC_Title = "Zenith Modded (6.1.7) (Collecting Unused Memory)";
+        const string Console_Title = "Zenith EX (6.2.0)";
+        const string GC_Title = "Zenith EX (6.2.0) (Collecting Unused Memory)";
 
         void RunLanguageCheck()
         {
@@ -281,7 +281,7 @@ namespace Zenith_MIDI
             }
 
             // windowTabs.VersionName = metaSettings.VersionName;
-            windowTabs.VersionName = "Mod 6.1.7";
+            windowTabs.VersionName = "Zenith EX 6.2.0";
 
             tempoMultSlider.nudToSlider = v => Math.Log(v, 2);
             tempoMultSlider.sliderToNud = v => Math.Pow(2, v);
@@ -294,7 +294,7 @@ namespace Zenith_MIDI
                 {
                     { "defaultBackground", "" },
                     { "ignoreKDMAPI", "false" },
-                    { "defaultPlugin", "Classic" },
+                    { "defaultPlugin", "PFA+" },
                     { "ignoreLanguageUpdates", "false" }
                 };
                 File.WriteAllText("Settings/settings.json", JsonConvert.SerializeObject(sett));
@@ -326,20 +326,7 @@ namespace Zenith_MIDI
             settings = new RenderSettings();
             settings.PauseToggled += ToggledPause;
             InitialiseSettingsValues();
-            //creditText.Text = "Video was rendered with Zenith\nhttps://arduano.github.io/Zenith-MIDI/start";
-            // if today is not my birthday, show this:
-            if (DateTime.Now.Month == 1 && DateTime.Now.Day == 8)
-            {
-                int age = DateTime.Now.Year - 2006;
-                creditText.Text = "Today is NullptrBlacker's Birthday!\nHe turned " + age + " years old!";
-                
-            }
-            else
-            {
-                // creditText.Text = "Video was rendered with Zenith Modded\nhttps://github.com/noob601/Zenith-MIDI-Modded";
-                creditText.Text = "Video was rendered with Zenith Modded\nhttps://github.com/noob601/Zenith-MIDI-Modded";
-            }
-
+                creditText.Text = "Video was rendered with Zenith EX 6.2.0\nhttps://github.com/sudo-000/Zenith-EX-Improved";
             if (languageLoader != null) languageLoader.Wait();
 
             var languagePacks = Directory.GetDirectories("Languages");

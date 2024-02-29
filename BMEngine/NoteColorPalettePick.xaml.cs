@@ -6,17 +6,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 using Brushes = System.Windows.Media.Brushes;
 using Color = System.Drawing.Color;
@@ -164,16 +155,6 @@ namespace ZenithEngine
                 }
             }
             catch { }
-        }
-
-        void SetQQSColor()
-        {
-            Bitmap img = new Bitmap(16, 1);
-            Random ColorGen = new Random();
-            for (int i = 0; i < 16; i++)
-            {
-                
-            }
         }
 
         public void SelectImage(string img)

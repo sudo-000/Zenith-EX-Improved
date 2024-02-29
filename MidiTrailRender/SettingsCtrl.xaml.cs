@@ -46,9 +46,9 @@ namespace MIDITrailRender
             tiltKeys.IsChecked = settings.tiltKeys;
             showKeyboard.IsChecked = settings.showKeyboard;
             noteDeltaScreenTime.Value = settings.deltaTimeOnScreen;
-            camOffsetX.Value = settings.viewOffset;
-            camOffsetY.Value = settings.viewHeight;
-            camOffsetZ.Value = settings.viewPan;
+            camOffsetX.Value = (decimal)settings.viewOffset;
+            camOffsetY.Value = (decimal)settings.viewHeight;
+            camOffsetZ.Value = (decimal)settings.viewPan;
             FOVSlider.Value = settings.FOV / Math.PI * 180;
             viewAngSlider.Value = settings.camAng / Math.PI * 180;
             viewTurnSlider.Value = settings.camRot / Math.PI * 180;
@@ -86,17 +86,9 @@ namespace MIDITrailRender
             if (sender == lastNote) settings.lastNote = (int)lastNote.Value + 1;
             if (sender == noteDownSpeed) settings.noteDownSpeed = (double)noteDownSpeed.Value;
             if (sender == noteUpSpeed) settings.noteUpSpeed = (double)noteUpSpeed.Value;
-            //if (sender == camOffsetX) settings.viewOffset = (double)camOffsetX.Value;
-            //if (sender == camOffsetY) settings.viewHeight = (double)camOffsetY.Value;
-            //if (sender == camOffsetZ) settings.viewPan = (double)camOffsetZ.Value;
-        }
-
-        // set offset
-        private void Offset_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (sender == camOffsetX) settings.viewOffset = camOffsetX.Value;
-            else if (sender == camOffsetY) settings.viewHeight = camOffsetY.Value;
-            else settings.viewPan = camOffsetZ.Value;
+            if (sender == camOffsetX) settings.viewOffset = (double)camOffsetX.Value;
+            if (sender == camOffsetY) settings.viewHeight = (double)camOffsetY.Value;
+            if (sender == camOffsetZ) settings.viewPan = (double)camOffsetZ.Value;
         }
 
         void injectSettings(Settings sett)
@@ -148,26 +140,19 @@ namespace MIDITrailRender
         private void RenderDistSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (settings == null) return;
-            settings.viewdist = renderDistSlider.Value;
+            settings.viewdist = (double)renderDistSlider.Value;
         }
 
         private void RenderDistBackSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (settings == null) return;
-            settings.viewback = renderDistBackSlider.Value;
+            settings.viewback = (double)renderDistBackSlider.Value;
         }
-        // note ratio
-        private void NoteWidthRatio_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (settings == null) return;
-            settings.noteWidthRatio = noteWidthRatio.Value;
-        }
-        // end
 
         private void FarPreset_Click(object sender, RoutedEventArgs e)
         {
-            camOffsetY.Value = 0.5;
-            camOffsetX.Value = 0.4;
+            camOffsetY.Value = 0.5M;
+            camOffsetX.Value = 0.4M;
             camOffsetZ.Value = 0;
             FOVSlider.Value = 60;
             viewAngSlider.Value = 32.08;
@@ -179,8 +164,8 @@ namespace MIDITrailRender
 
         private void MediumPreset_Click(object sender, RoutedEventArgs e)
         {
-            camOffsetY.Value = 0.52;
-            camOffsetX.Value = 0.37;
+            camOffsetY.Value = 0.52M;
+            camOffsetX.Value = 0.37M;
             camOffsetZ.Value = 0;
             FOVSlider.Value = 60;
             viewAngSlider.Value = 34.98;
@@ -192,8 +177,8 @@ namespace MIDITrailRender
 
         private void ClosePreset_Click(object sender, RoutedEventArgs e)
         {
-            camOffsetY.Value = 0.55;
-            camOffsetX.Value = 0.33;
+            camOffsetY.Value = 0.55M;
+            camOffsetX.Value = 0.33M;
             camOffsetZ.Value = 0;
             FOVSlider.Value = 60;
             viewAngSlider.Value = 39.62;
@@ -205,9 +190,9 @@ namespace MIDITrailRender
 
         private void TopPreset_Click(object sender, RoutedEventArgs e)
         {
-            camOffsetY.Value = 10;
-            camOffsetX.Value = -3.77;
-            camOffsetZ.Value = -1.53;
+            camOffsetY.Value = 10M;
+            camOffsetX.Value = -3.77M;
+            camOffsetZ.Value = -1.53M;
             FOVSlider.Value = 26;
             viewAngSlider.Value = 90;
             viewTurnSlider.Value = -90;
@@ -218,28 +203,15 @@ namespace MIDITrailRender
 
         private void PerspectivePreset_Click(object sender, RoutedEventArgs e)
         {
-            camOffsetY.Value = 0.67;
-            camOffsetX.Value = 1.07;
-            camOffsetZ.Value = -0.32;
+            camOffsetY.Value = 0.67M;
+            camOffsetX.Value = 1.07M;
+            camOffsetZ.Value = -0.32M;
             FOVSlider.Value = 60;
             viewAngSlider.Value = 33.24;
             viewTurnSlider.Value = -13.84;
             viewSpinSlider.Value = 0;
             renderDistSlider.Value = 14;
             renderDistBackSlider.Value = 0.98;
-        }
-        // very close
-        private void VeryClosePreset_Click(object sender, RoutedEventArgs e)
-        {
-            camOffsetX.Value = -0.2;
-            camOffsetY.Value = 0.7;
-            camOffsetZ.Value = 0.0;
-            FOVSlider.Value = 50;
-            viewAngSlider.Value = 90.00;
-            viewTurnSlider.Value = 0;
-            viewSpinSlider.Value = 0;
-            renderDistSlider.Value = 3;
-            renderDistBackSlider.Value = 1;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -274,13 +246,13 @@ namespace MIDITrailRender
         private void CheckboxChecked(object sender, RoutedEventArgs e)
         {
             if (settings == null) return;
-                if (sender == notesChangeSize) settings.notesChangeSize = notesChangeSize.IsChecked;
-                if (sender == notesChangeTint) settings.notesChangeTint = notesChangeTint.IsChecked;
-                if (sender == eatNotes) settings.eatNotes = eatNotes.IsChecked;
-                if (sender == sameWidthNotes) settings.sameWidthNotes = sameWidthNotes.IsChecked;
-                if (sender == lightShade) settings.lightShade = lightShade.IsChecked;
-                if (sender == tiltKeys) settings.tiltKeys = tiltKeys.IsChecked;
-                if (sender == showKeyboard) settings.showKeyboard = showKeyboard.IsChecked;
+                if (sender == notesChangeSize) settings.notesChangeSize = (bool)notesChangeSize.IsChecked;
+                if (sender == notesChangeTint) settings.notesChangeTint = (bool)notesChangeTint.IsChecked;
+                if (sender == eatNotes) settings.eatNotes = (bool)eatNotes.IsChecked;
+                if (sender == sameWidthNotes) settings.sameWidthNotes = (bool)sameWidthNotes.IsChecked;
+                if (sender == lightShade) settings.lightShade = (bool)lightShade.IsChecked;
+                if (sender == tiltKeys) settings.tiltKeys = (bool)tiltKeys.IsChecked;
+                if (sender == showKeyboard) settings.showKeyboard = (bool)showKeyboard.IsChecked;
         }
 
         private void NewProfile_Click(object sender, RoutedEventArgs e)

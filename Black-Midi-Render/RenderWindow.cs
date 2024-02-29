@@ -541,7 +541,6 @@ void main()
             }
             int noNoteFrames = 0;
             long lastNC = 0;
-            bool firstRenderer = true;
             frameStartTime = DateTime.Now.Ticks;
             if (settings.timeBasedNotes) microsecondsPerTick = 10000;
             else microsecondsPerTick = (long)(lastTempo / midi.division * 10);
@@ -629,11 +628,9 @@ void main()
                                 render.renderer.Init();
                                 render.renderer.NoteColors = midi.tracks.Select(t => t.trkColors).ToArray();
                                 render.renderer.ReloadTrackColors();
-                                if (firstRenderer)
-                                {
-                                    firstRenderer = false;
-                                    midi.SetZeroColors();
-                                }
+                                render.renderer.CurrentMidi = midi.info;
+                                render.renderer.NoteColors = midi.tracks.Select(t => t.trkColors).ToArray();
+                                render.renderer.ReloadTrackColors();
                                 render.renderer.CurrentMidi = midi.info;
                             }
                             render.renderer.Tempo = 60000000.0 / lastTempo;

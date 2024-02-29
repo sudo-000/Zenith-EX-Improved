@@ -1,0 +1,11 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\bin\Release\ZenithShared.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\bin\Release\ZenithShared.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.csproj.ResolveComReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ZenithShared\obj\Release\ZenithShared.pdb

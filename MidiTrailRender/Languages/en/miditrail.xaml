@@ -31,8 +31,6 @@
     <system:String x:Key="changeSize">Change Size</system:String>
     <system:String x:Key="changeTint">Change Tint</system:String>
     <system:String x:Key="showKeyboard">Show Keyboard</system:String>
-    <!--Note Width-->
-    <system:String x:Key="noteWidth">Note Width Ratio</system:String>
 
     <!--Camera-->
     <system:String x:Key="speedWarning">WARNING: This plug-in can use much more ram and CPU due to the higher note time on screen. The more notes are visible, the slower the render!</system:String>
@@ -59,9 +57,7 @@
     <system:String x:Key="offsetY">Y</system:String>
     <system:String x:Key="offsetZ">Z</system:String>
     <system:String x:Key="topPreset">Top</system:String>
-    <system:String x:Key="perspectivePreset">Perspective</system:String>
-    <!--New Preset-->
-    <system:String x:Key="veryClosePreset">Very Close</system:String>
+    <system:String x:Key="perspectivePreset">Perspective</system:String> 
 
     <!--Aura-->
     <system:String x:Key="imageHint">Image needs to be square png and only alpha is taken into account</system:String>
@@ -69,6 +65,4 @@
     <system:String x:Key="reload">Reload</system:String>
     <system:String x:Key="auraStrength">Strength:</system:String>
     <system:String x:Key="openAuraFolder">Open Aura Folder</system:String>
-    <!--Aura Radius-->
-    <system:String x:Key="auraRadius">Radius:</system:String>
 </ResourceDictionary>

@@ -31,7 +31,7 @@
             </DockPanel>
             <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top">
                 <Label Content="{DynamicResource noteScreenTime}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-                <ui:ValueSlider x:Name="noteDeltaScreenTime" Maximum="12" DecimalPoints="1" Minimum="2" TrueMin="1" TrueMax="131072" ValueChanged="NoteDeltaScreenTime_ValueChanged" Width="305" VerticalAlignment="Top" Step="0.1"/>
+                <ui:ValueSlider x:Name="noteDeltaScreenTime" Maximum="12" DecimalPoints="2" Minimum="2" TrueMin="1" TrueMax="100000" ValueChanged="NoteDeltaScreenTime_ValueChanged" Width="305" VerticalAlignment="Top"/>
             </DockPanel>
             <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top">
                 <Label Content="{DynamicResource pianoHeight}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
@@ -39,11 +39,11 @@
             </DockPanel>
             <ui:BetterCheckbox x:Name="sameWidth" Text="{DynamicResource sameWidthNotes}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" IsChecked="True" CheckToggled="SameWidth_Checked"/>
             <ui:BetterCheckbox Name="middleCSquare" Text="{DynamicResource middleCSquare}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CheckToggled="MiddleCSquare_Checked"/>
-            <ui:BetterCheckbox x:Name="blackNotesAbove" Text="{DynamicResource blackNotesAbove}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CheckToggled="BlackNotesAbove_Checked" IsChecked="True"/>
+            <ui:BetterCheckbox x:Name="blackNotesAbove" Text="{DynamicResource blackNotesAbove}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CheckToggled="BlackNotesAbove_Checked"/>
             <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top">
                 <Label x:Name="topCol" Content="{DynamicResource topColor}" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Left"/>
                 <TextBlock HorizontalAlignment="Left" Margin="0,6,2,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="barColorHex" HorizontalAlignment="Left" FontSize="14" MaxLength="6" Height="24" Margin="0,2,0,0" TextWrapping="Wrap" Text="950A06" VerticalAlignment="Top" Width="68" TextChanged="BarColorHex_TextChanged"/>
+                <TextBox x:Name="barColorHex" HorizontalAlignment="Left" FontSize="14" MaxLength="6" Height="24" Margin="0,2,0,0" TextWrapping="Wrap" Text="950A06" VerticalAlignment="Top" Width="58" TextChanged="BarColorHex_TextChanged"/>
             </DockPanel>
             <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" >
                 <Label Content="{DynamicResource borderWidth}" DockPanel.Dock="Left" VerticalAlignment="Top"/>

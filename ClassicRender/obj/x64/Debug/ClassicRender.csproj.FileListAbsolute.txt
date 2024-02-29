@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\Languages\en\classic.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\ClassicRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\ClassicRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\x64\Debug\ClassicRender.pdb

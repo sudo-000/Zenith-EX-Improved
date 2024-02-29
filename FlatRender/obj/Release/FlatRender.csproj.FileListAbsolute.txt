@@ -1,0 +1,4 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\Release\FlatRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\Release\FlatRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\Release\FlatRender_MarkupCompile.lref

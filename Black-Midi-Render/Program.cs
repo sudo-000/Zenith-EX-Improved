@@ -53,11 +53,7 @@ namespace Zenith_MIDI
             try
             {
 #endif
-#if !DEBUG
-                Console.Title = "Zenith Modded (6.1.7)";
-#else
-                Console.Title = "Zenith Modded (Debug)";
-#endif
+                Console.Title = "Zenith EX (6.2.0)";
                 System.Windows.Application app = new System.Windows.Application();
                 app.Run(new MainWindow());
 #if !DEBUG

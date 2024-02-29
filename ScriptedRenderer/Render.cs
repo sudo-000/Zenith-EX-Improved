@@ -50,7 +50,7 @@ namespace ScriptedRender
         public MidiInfo CurrentMidi { get; set; }
 
         #region Shaders
-        const string quadShaderVert = @"#version 330 core
+        string quadShaderVert = @"#version 330 core
 
 layout(location=0) in vec2 in_position;
 layout(location=1) in vec4 in_color;
@@ -69,7 +69,7 @@ void main()
     texid = in_texid;
 }
 ";
-        const string quadShaderFrag = @"#version 330 core
+        string quadShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 in vec2 uv;
@@ -109,7 +109,7 @@ void main()
     out_color = col * v2f_color;
 }
 ";
-        const string invertQuadShaderFrag = @"#version 330 core
+        string invertQuadShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 in vec2 uv;
@@ -154,7 +154,7 @@ void main()
     out_color.w = 1 - out_color.w;
 }
 ";
-        const string evenQuadShaderFrag = @"#version 330 core
+        string evenQuadShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 in vec2 uv;
@@ -212,12 +212,13 @@ void main()
         {
             int _vertexObj = GL.CreateShader(ShaderType.VertexShader);
             int _fragObj = GL.CreateShader(ShaderType.FragmentShader);
+            int statusCode;
             string info;
 
             GL.ShaderSource(_vertexObj, vert);
             GL.CompileShader(_vertexObj);
             info = GL.GetShaderInfoLog(_vertexObj);
-            GL.GetShader(_vertexObj, ShaderParameter.CompileStatus, out int statusCode);
+            GL.GetShader(_vertexObj, ShaderParameter.CompileStatus, out statusCode);
             if (statusCode != 1) throw new ApplicationException(info);
 
             GL.ShaderSource(_fragObj, frag);
@@ -244,7 +245,7 @@ void main()
         int uvBufferID;
         int texIDBufferID;
 
-        int quadBufferLength = 131072;
+        int quadBufferLength = 2048 * 64;
         double[] quadVertexbuff;
         float[] quadColorbuff;
         double[] quadUVbuff;
@@ -252,7 +253,7 @@ void main()
         int quadBufferPos = 0;
 
         int indexBufferId;
-        uint[] indexes = new uint[262144 * 6];
+        uint[] indexes = new uint[2048 * 128 * 6];
 
         double[] x1arrayKeys = new double[257];
         double[] x1arrayNotes = new double[257];
@@ -418,29 +419,8 @@ void main()
             GL.GenBuffers(1, out colorBufferID);
             GL.GenBuffers(1, out uvBufferID);
             GL.GenBuffers(1, out texIDBufferID);
-            for (uint i = 0; i < indexes.Length / 6; ++i)
+            for (uint i = 0; i < indexes.Length / 6; i++)
             {
-                indexes[i * 6 + 0] = i * 4 + 0;
-                indexes[i * 6 + 1] = i * 4 + 1;
-                indexes[i * 6 + 2] = i * 4 + 3;
-                indexes[i * 6 + 3] = i * 4 + 1;
-                indexes[i * 6 + 4] = i * 4 + 3;
-                indexes[i * 6 + 5] = i * 4 + 2;
-                ++i;
-                indexes[i * 6 + 0] = i * 4 + 0;
-                indexes[i * 6 + 1] = i * 4 + 1;
-                indexes[i * 6 + 2] = i * 4 + 3;
-                indexes[i * 6 + 3] = i * 4 + 1;
-                indexes[i * 6 + 4] = i * 4 + 3;
-                indexes[i * 6 + 5] = i * 4 + 2;
-                ++i;
-                indexes[i * 6 + 0] = i * 4 + 0;
-                indexes[i * 6 + 1] = i * 4 + 1;
-                indexes[i * 6 + 2] = i * 4 + 3;
-                indexes[i * 6 + 3] = i * 4 + 1;
-                indexes[i * 6 + 4] = i * 4 + 3;
-                indexes[i * 6 + 5] = i * 4 + 2;
-                ++i;
                 indexes[i * 6 + 0] = i * 4 + 0;
                 indexes[i * 6 + 1] = i * 4 + 1;
                 indexes[i * 6 + 2] = i * 4 + 3;
@@ -556,7 +536,7 @@ void main()
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             #region Vars
-            for (int i = 0; i < 12; ++i) activeTexIds[i] = -1;
+            for (int i = 0; i < 12; i++) activeTexIds[i] = -1;
             currentShader = TextureShaders.Normal;
             currentBlendFunc = BlendFunc.Mix;
 
@@ -694,7 +674,7 @@ void main()
 
         int FindTexSlot(int id)
         {
-            for (int i = 0; i < 12; ++i)
+            for (int i = 0; i < 12; i++)
             {
                 if (activeTexIds[i] == id) return i;
                 if (activeTexIds[i] == -1)
@@ -730,14 +710,14 @@ void main()
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 64),
+                (IntPtr)(quadBufferPos * 8 * 8),
                 quadVertexbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Double, false, 16, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, colorBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 64),
+                (IntPtr)(quadBufferPos * 16 * 4),
                 quadColorbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 16, 0);
@@ -751,7 +731,7 @@ void main()
             GL.BindBuffer(BufferTarget.ArrayBuffer, texIDBufferID);
             GL.BufferData(
                 BufferTarget.ArrayBuffer,
-                (IntPtr)(quadBufferPos * 16),
+                (IntPtr)(quadBufferPos * 1 * 4 * 4),
                 quadTexIDbuff,
                 BufferUsageHint.StaticDraw);
             GL.VertexAttribPointer(3, 1, VertexAttribPointerType.Float, false, 4, 0);
@@ -801,9 +781,9 @@ void main()
             if (NoteColors == null) return;
             var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(NoteColors.Length);
 
-            for (int i = 0, NoteColorsLength = NoteColors.Length; i < NoteColorsLength; i++)
+            for (int i = 0; i < NoteColors.Length; i++)
             {
-                for (int j = 0, EachColorLength = NoteColors[i].Length; j < EachColorLength; j++)
+                for (int j = 0; j < NoteColors[i].Length; j++)
                 {
                     if (NoteColors[i][j].isDefault)
                     {

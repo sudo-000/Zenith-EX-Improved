@@ -28,13 +28,13 @@ namespace NoteCountRender
     {
         Settings settings;
 
-        const string defText = @"Notes: {nc} / {tn}
+        string defText = @"Notes: {nc} / {tn}
 BPM: {bpm}
 NPS: {nps}
 PPQ: {ppq}
 Polyphony: {plph}
 Time: {currtime}";
-        const string fullText = @"Notes: {nc} / {tn} / {nr}
+        string fullText = @"Notes: {nc} / {tn} / {nr}
 BPM: {bpm}
 NPS: {nps} (Max: {mnps})
 Polyphony: {plph} (Max: {mplph})
@@ -53,9 +53,10 @@ Average NPS: {avgnps}
 Notes: {notep}%
 Ticks: {tickp}%
 Time: {timep}%";
-        const string MIDITrail = @"TIME:{cmiltime}/{tmiltime}  BPM:{bpm}  BEAT:{tsn}/{tsd}  BAR:{currbars}/{totalbars}  NOTES:{nc}/{tn}";
+        string MIDITrail = @"TIME:{cmiltime}/{tmiltime}  BPM:{bpm}  BEAT:{tsn}/{tsd}  BAR:{currbars}/{totalbars}  NOTES:{nc}/{tn}";
 
         bool initialised = false;
+        bool Reloading = false;
 
         string templateFolder = "Plugins\\Assets\\NoteCounter\\Templates";
 
@@ -194,7 +195,7 @@ Time: {timep}%";
             }
             foreach (var i in templates.Items)
             {
-                if ((string)((ComboBoxItem)i).Content == "default")
+                if (!Reloading && (string)((ComboBoxItem)i).Content == "default")
                 {
                     templates.SelectedItem = i;
                     break;
@@ -204,12 +205,13 @@ Time: {timep}%";
 
         private void Templates_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!initialised) return;
+            if (!initialised || templates.SelectedIndex == -1) return;
             textTemplate.Text = templateStrings[templates.SelectedIndex];
         }
 
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
+            Reloading = true;
             Reload();
         }
 
@@ -255,13 +257,10 @@ Time: {timep}%";
 
         private void ZP(object sender, RoutedPropertyChangedEventArgs<bool> e)
         {
-            settings.PaddingZeroes = ZeroPadding.IsChecked;
+            settings.PaddingZeroes = (bool)ZeroPadding.IsChecked;
         }
         private void Paddings_ValueChanged(object sender, RoutedPropertyChangedEventArgs<decimal> e)
         {
-            if (settings == null) return;
-            if (BPMint == null || BPMDecPt == null || NoteCount == null || Polyphony == null ||
-                NPS == null || Ticks == null || Bars == null || Frames == null) return;
             settings.BPMintPad = (int)BPMint.Value;
             settings.BPMDecPtPad = (int)BPMDecPt.Value;
             settings.NoteCountPad = (int)NoteCount.Value;
@@ -282,6 +281,37 @@ Time: {timep}%";
             settings.TicksPad = 5;
             settings.BarCountPad = 3;
             settings.FrCountPad = 5;
+        }
+
+        private void NewProfile_Click(object sender, RoutedEventArgs e)
+        {
+            if (profileName.Text == "")
+            {
+                MessageBox.Show("Please write a name for the profile");
+                return;
+            }
+            profileName.Text = profileName.Text.Replace(".txt", "");
+            if (String.Compare(profileName.Text, "default", true) == 0 ||
+                String.Compare(profileName.Text, "full", true) == 0 ||
+                String.Compare(profileName.Text, "miditrail", true) == 0)
+            {
+                MessageBox.Show("You can't override default profiles.");
+                return;
+            }
+            if (File.Exists(templateFolder + "\\" + profileName.Text + ".txt"))
+            {
+                if (MessageBox.Show("Are you sure you want to override the profile \"" + profileName.Text + "\"?", "Override Profile", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
+            try
+            {
+                File.WriteAllText(Path.Combine(templateFolder, profileName.Text + ".txt"), textTemplate.Text);
+            }
+            catch { }
+            Reloading = true;
+            Reload();
         }
     }
 }

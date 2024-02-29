@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\Languages\en\flat.xaml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\FlatRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\bin\x64\Debug\Plugins\FlatRender.pdb
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender_MarkupCompile.lref
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\SettingsCtrl.baml
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.g.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.Properties.Resources.resources
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.csproj.CopyComplete
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.dll
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\FlatRender\obj\x64\Debug\FlatRender.pdb

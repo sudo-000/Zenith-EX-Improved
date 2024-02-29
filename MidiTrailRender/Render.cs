@@ -36,7 +36,7 @@ namespace MIDITrailRender
         }
         #endregion
 
-        public string Name => "MIDITrail++";
+        public string Name => "MIDITrail+";
         public string Description => "Clone of the popular tool MIDITrail for black midi rendering. Added exclusive bonus features, and less buggy. Extremely customisable.";
         public string LanguageDictName { get; } = "miditrail";
 
@@ -45,7 +45,7 @@ namespace MIDITrailRender
         public ImageSource PreviewImage { get; private set; }
 
         #region Shaders
-        const string whiteKeyShaderVert = @"#version 330 core
+        string whiteKeyShaderVert = @"#version 330 core
 
 layout(location=0) in vec3 in_position;
 layout(location=1) in float in_brightness;
@@ -63,7 +63,7 @@ void main()
     v2f_color = vec4((coll.xyz * blend_fac + colr.xyz * (1 - blend_fac)) * in_brightness, 1);
 }
 ";
-        const string whiteKeyShaderFrag = @"#version 330 core
+        string whiteKeyShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 layout (location=0) out vec4 out_color;
@@ -73,7 +73,8 @@ void main()
     out_color = v2f_color;
 }
 ";
-        const string blackKeyShaderVert = @"#version 330 core
+
+        string blackKeyShaderVert = @"#version 330 core
 
 layout(location=0) in vec3 in_position;
 layout(location=1) in float in_brightness;
@@ -91,7 +92,7 @@ void main()
     v2f_color = vec4(1 - in_brightness + (coll.xyz * blend_fac + colr.xyz * (1 - blend_fac)) * in_brightness, 1);
 }
 ";
-        const string blackKeyShaderFrag = @"#version 330 core
+        string blackKeyShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 layout (location=0) out vec4 out_color;
@@ -101,7 +102,7 @@ void main()
     out_color = v2f_color;
 }
 ";
-        const string noteShaderVert = @"#version 330 core
+        string noteShaderVert = @"#version 330 core
 
 layout(location=0) in vec3 in_position;
 layout(location=1) in vec4 in_color;
@@ -117,7 +118,7 @@ void main()
     v2f_color = vec4(in_color.xyz + in_shade, in_color.w);
 }
 ";
-        const string noteShaderFrag = @"#version 330 core
+        string noteShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 layout (location=0) out vec4 out_color;
@@ -127,7 +128,7 @@ void main()
     out_color = v2f_color;
 }
 ";
-        const string circleShaderVert = @"#version 330 core
+        string circleShaderVert = @"#version 330 core
 
 layout(location=0) in vec3 in_position;
 layout(location=1) in vec4 in_color;
@@ -145,7 +146,7 @@ void main()
     uv = in_uv;
 }
 ";
-        const string circleShaderFrag = @"#version 330 core
+        string circleShaderFrag = @"#version 330 core
 
 in vec4 v2f_color;
 in vec2 uv;
@@ -165,12 +166,13 @@ void main()
         {
             int _vertexObj = GL.CreateShader(ShaderType.VertexShader);
             int _fragObj = GL.CreateShader(ShaderType.FragmentShader);
+            int statusCode;
             string info;
 
             GL.ShaderSource(_vertexObj, vert);
             GL.CompileShader(_vertexObj);
             info = GL.GetShaderInfoLog(_vertexObj);
-            GL.GetShader(_vertexObj, ShaderParameter.CompileStatus, out int statusCode);
+            GL.GetShader(_vertexObj, ShaderParameter.CompileStatus, out statusCode);
             if (statusCode != 1) throw new ApplicationException(info);
 
             GL.ShaderSource(_fragObj, frag);
@@ -238,7 +240,7 @@ void main()
         int buffer3dbuf;
         int buffer3dbufdepth;
 
-        int[] whiteKeyVert = new int[21];
+        int[] whiteKeyVert = new int[7 * 3];
         int whiteKeyCol;
         int whiteKeyIndx;
         int whiteKeyBlend;
@@ -253,7 +255,7 @@ void main()
         int noteIndx;
         int noteShade;
 
-        int noteBuffLen = /*2048 * 256*/524288;
+        int noteBuffLen = 2048 * 256;
 
         double[] noteVertBuff;
         float[] noteColBuff;
@@ -276,11 +278,6 @@ void main()
 
         long lastAuraTexChange;
         int auraTex;
-
-        Color4 Color4Transparent = Color4.Transparent;
-
-        double noteWidthRatio;
-        double auraRadiusRatio;
 
         void loadImage(Bitmap image, int texID)
         {
@@ -342,10 +339,10 @@ void main()
             settingsCtrl = new SettingsCtrl(this.settings);
             ((SettingsCtrl)SettingsControl).PaletteChanged += () => { ReloadTrackColors(); };
             PreviewImage = BitmapToImageSource(Properties.Resources.preview);
-            for (int i = 0, blackKeysLength = blackKeys.Length; i < blackKeysLength; ++i) blackKeys[i] = isBlackNote(i);
+            for (int i = 0; i < blackKeys.Length; i++) blackKeys[i] = isBlackNote(i);
             int b = 0;
             int w = 0;
-            for (int i = 0, keyNumLength = keynum.Length; i < keyNumLength; ++i)
+            for (int i = 0; i < keynum.Length; i++)
             {
                 if (blackKeys[i]) keynum[i] = b++;
                 else keynum[i] = w++;
@@ -384,7 +381,7 @@ void main()
             Initialized = true;
             Console.WriteLine("Initialised MIDITrailRender");
 
-            GL.GenBuffers(21, whiteKeyVert);
+            GL.GenBuffers(7 * 3, whiteKeyVert);
             whiteKeyCol = GL.GenBuffer();
             whiteKeyIndx = GL.GenBuffer();
             whiteKeyBlend = GL.GenBuffer();
@@ -404,18 +401,18 @@ void main()
             circleUV = GL.GenBuffer();
             circleIndx = GL.GenBuffer();
 
-            noteVertBuff = new double[noteBuffLen * 12];
-            noteColBuff = new float[noteBuffLen * 16];
+            noteVertBuff = new double[noteBuffLen * 4 * 3];
+            noteColBuff = new float[noteBuffLen * 4 * 4];
             noteShadeBuff = new float[noteBuffLen * 4];
 
             noteIndxBuff = new int[noteBuffLen * 4];
 
-            circleVertBuff = new double[3072];
-            circleColorBuff = new float[4096];
-            circleUVBuff = new double[2048];
-            circleIndxBuff = new int[1024];
+            circleVertBuff = new double[256 * 4 * 3];
+            circleColorBuff = new float[256 * 4 * 4];
+            circleUVBuff = new double[256 * 4 * 2];
+            circleIndxBuff = new int[256 * 4];
 
-            for (int i = 0; i < noteIndxBuff.Length; ++i) noteIndxBuff[i] = i;
+            for (int i = 0; i < noteIndxBuff.Length; i++) noteIndxBuff[i] = i;
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, noteIndx);
             GL.BufferData(
                 BufferTarget.ElementArrayBuffer,
@@ -423,7 +420,7 @@ void main()
                 noteIndxBuff,
                 BufferUsageHint.StaticDraw);
 
-            for (int i = 0; i < circleIndxBuff.Length; ++i) circleIndxBuff[i] = i;
+            for (int i = 0; i < circleIndxBuff.Length; i++) circleIndxBuff[i] = i;
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, circleIndx);
             GL.BufferData(
                 BufferTarget.ElementArrayBuffer,
@@ -624,8 +621,8 @@ void main()
                 lenfac, lenfac, lenfac, lenfac,
             };
             int[] indexes = new int[52];
-            for (int i = 0; i < 52; ++i) indexes[i] = i;
-            whiteKeyBufferLen = 52;
+            for (int i = 0; i < indexes.Length; i++) indexes[i] = i;
+            whiteKeyBufferLen = indexes.Length;
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, whiteKeyCol);
             GL.BufferData(
@@ -796,16 +793,8 @@ void main()
             };
 
             indexes = new int[32];
-            for (int i = 0; i < 32; ++i) { 
-                indexes[i] = i;
-                ++i;
-                indexes[i] = i;
-                ++i;
-                indexes[i] = i;
-                ++i;
-                indexes[i] = i;
-            }
-            blackKeyBufferLen = 32;
+            for (int i = 0; i < indexes.Length; i++) indexes[i] = i;
+            blackKeyBufferLen = indexes.Length;
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, blackKeyVert);
             GL.BufferData(
@@ -923,113 +912,9 @@ void main()
             camRot = settings.camRot;
             camSpin = settings.camSpin;
             fov /= 1;
-            noteWidthRatio = settings.noteWidthRatio;
-            auraRadiusRatio = settings.auraRadiusRatio;
-            // for (int i = 0; i < 514; i++) keyColors[i] = Color4.Transparent;
-            for (int i = 0; i < 512; ++i)
-            {
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-                ++i;
-                keyColors[i] = Color4Transparent;
-            }
-            keyColors[512] = Color4Transparent;
-            keyColors[513] = Color4Transparent;
-            // for (int i = 0; i < 256; i++) auraSize[i] = 0;
-            for (int i = 0; i < 256; ++i)
-            {
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-                ++i;
-                auraSize[i] = 0;
-            }
-            for (int i = 0; i < 257; ++i) keyPressFactor[i] = Math.Max(keyPressFactor[i] / 1.05 - noteUpSpeed, 0);
+            for (int i = 0; i < 514; i++) keyColors[i] = Color4.Transparent;
+            for (int i = 0; i < 256; i++) auraSize[i] = 0;
+            for (int i = 0; i < keyPressFactor.Length; i++) keyPressFactor[i] = Math.Max(keyPressFactor[i] / 1.05 - noteUpSpeed, 0);
             float wdth;
             double wdthd;
             float r, g, b, a, r2, g2, b2, a2;
@@ -1053,7 +938,7 @@ void main()
                 double knmln = keynum[lastNote - 1];
                 if (blackKeys[firstNote]) knmfn = keynum[firstNote - 1] + 0.5;
                 if (blackKeys[lastNote - 1]) knmln = keynum[lastNote] - 0.5;
-                for (int i = 0; i < 257; ++i)
+                for (int i = 0; i < 257; i++)
                 {
                     if (!blackKeys[i])
                     {
@@ -1066,7 +951,7 @@ void main()
                         wdth = (float)(0.6f / (knmln - knmfn + 1));
                         int bknum = keynum[i] % 5;
                         double offset = wdth / 2;
-                        /*if (bknum == 0)
+                        if (bknum == 0)
                         {
                             offset *= 1.4;
                         }
@@ -1081,21 +966,6 @@ void main()
                         else if (bknum == 4)
                         {
                             offset *= 1 / 1.5;
-                        }*/
-                        switch (bknum)
-                        {
-                            case 0:
-                                offset *= 1.4;
-                                break;
-                            case 1:
-                                offset /= 1.4;
-                                break;
-                            case 2:
-                                offset *= 1.5;
-                                break;
-                            case 4:
-                                offset /= 1.5;
-                                break;
                         }
                         x1array[i] = (float)(keynum[_i] - knmfn) / (knmln - knmfn + 1) - offset;
                         wdtharray[i] = wdth;
@@ -1141,10 +1011,6 @@ void main()
                             float shade = 0;
                             x1d = x1array[k] - 0.5;
                             wdthd = wdtharray[k];
-                            // set note width
-                            wdthd *= noteWidthRatio;
-                            // fix offset
-                            x1d += (1 - noteWidthRatio) * 0.0045;
                             y1 = n.end - midiTime;
                             y2 = n.start - midiTime;
                             if (eatNotes && y1 < 0) y1 = 0;
@@ -1257,10 +1123,6 @@ void main()
                             float shade = 0;
                             x1d = x1array[k] - 0.5;
                             wdthd = wdtharray[k];
-                            // set note width
-                            wdthd *= noteWidthRatio;
-                            // fix offset
-                            x1d += (1 - noteWidthRatio) * 0.0045;
                             x2d = x1d + wdthd;
                             y1 = n.end - midiTime;
                             y2 = n.start - midiTime;
@@ -1370,10 +1232,6 @@ void main()
 
                             x1d = x1array[k] - 0.5;
                             wdthd = wdtharray[k];
-                            // set note width
-                            wdthd *= noteWidthRatio;
-                            // fix offset
-                            x1d += (1 - noteWidthRatio) * 0.0045;
                             x2d = x1d + wdthd;
                             y1 = n.end - midiTime;
                             y2 = n.start - midiTime;
@@ -1551,9 +1409,6 @@ void main()
             double x2d;
             double y1;
             double y2;
-
-            double size;
-
             Matrix4 mvp;
 
             GL.UseProgram(circleShader);
@@ -1575,28 +1430,19 @@ void main()
             GL.UniformMatrix4(uCircleMVP, false, ref mvp);
 
             circleBuffPos = 0;
-            for (int n = firstNote; n < lastNote; ++n)
+            for (int n = firstNote; n < lastNote; n++)
             {
                 x1d = x1array[n] - 0.5;
                 wdthd = wdtharray[n];
-                // set note width
-                wdthd *= noteWidthRatio;
-                // fix offset
-                x1d += (1 - noteWidthRatio) * 0.0045;
-                // end
                 x2d = x1d + wdthd;
-                size = circleRadius * 12 * auraSize[n];
-                if (auraRadiusRatio != 1)
-                {
-                    size *= (auraRadiusRatio / 25) + 1;
-                }
+                double size = circleRadius * 12 * auraSize[n];
                 if (!blackKeys[n])
                 {
-                    // y2 = 0;
+                    y2 = 0;
                     if (settings.sameWidthNotes)
                     {
                         int _n = n % 12;
-                        /*if (_n == 0)
+                        if (_n == 0)
                             x2d += wdthd * 0.666f;
                         else if (_n == 2)
                         {
@@ -1618,34 +1464,7 @@ void main()
                             x2d += wdthd / 4;
                         }
                         else if (_n == 11)
-                            x1d -= wdthd * 0.75f;*/
-                        switch (_n)
-                        {
-                            case 0:
-                                x2d += wdthd * 0.666f;
-                                break;
-                            case 2:
-                                x1d -= wdthd / 3;
-                                x2d += wdthd / 3;
-                                break;
-                            case 4:
-                                x1d -= wdthd / 3 * 2;
-                                break;
-                            case 5:
-                                x2d += wdthd * 0.75f;
-                                break;
-                            case 7:
-                                x1d -= wdthd / 4;
-                                x2d += wdthd / 2;
-                                break;
-                            case 9:
-                                x1d -= wdthd / 2;
-                                x2d += wdthd / 4;
-                                break;
-                            case 11:
-                                x1d -= wdthd * 0.75f;
-                                break;
-                        }
+                            x1d -= wdthd * 0.75f;
                     }
                 }
 
@@ -1750,10 +1569,10 @@ void main()
                 float wdth2;
                 float x1;
                 float x2;
-                // double y2;
+                double y2;
                 Matrix4 mvp;
                 Color4[] origColors = new Color4[257];
-                for (int k = firstNote; k < lastNote; ++k)
+                for (int k = firstNote; k < lastNote; k++)
                 {
                     if (isBlackNote(k))
                         origColors[k] = Color4.Black;
@@ -1770,7 +1589,7 @@ void main()
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, whiteKeyIndx);
                 GL.IndexPointer(IndexPointerType.Int, 1, 0);
 
-                for (int n = firstNote; n < lastNote; ++n)
+                for (int n = firstNote; n < lastNote; n++)
                 {
                     x1 = (float)x1array[n];
                     wdth = (float)wdtharray[n];
@@ -1778,11 +1597,11 @@ void main()
 
                     if (!blackKeys[n])
                     {
-                        // y2 = 0;
+                        y2 = 0;
                         if (settings.sameWidthNotes)
                         {
                             int _n = n % 12;
-                            /*if (_n == 0)
+                            if (_n == 0)
                                 x2 += wdth * 0.666f;
                             else if (_n == 2)
                             {
@@ -1804,40 +1623,13 @@ void main()
                                 x2 += wdth / 4;
                             }
                             else if (_n == 11)
-                                x1 -= wdth * 0.75f;*/
-                            switch (_n)
-                            {
-                                case 0:
-                                    x2 += wdth * 0.666f;
-                                    break;
-                                case 2:
-                                    x1 -= wdth / 3;
-                                    x2 += wdth / 3;
-                                    break;
-                                case 4:
-                                    x1 -= wdth / 3 * 2;
-                                    break;
-                                case 5:
-                                    x2 += wdth * 0.75f;
-                                    break;
-                                case 7:
-                                    x1 -= wdth / 4;
-                                    x2 += wdth / 2;
-                                    break;
-                                case 9:
-                                    x1 -= wdth / 2;
-                                    x2 += wdth / 4;
-                                    break;
-                                case 11:
-                                    x1 -= wdth * 0.75f;
-                                    break;
-                            }
-                            //wdth2 = wdth * 2;
+                                x1 -= wdth * 0.75f;
+                            wdth2 = wdth * 2;
                         }
-                        //else
-                        //{
-                        //    wdth2 = wdth;
-                        //}
+                        else
+                        {
+                            wdth2 = wdth;
+                        }
                     }
                     else continue;
                     wdth = x2 - x1;
@@ -1914,7 +1706,7 @@ void main()
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, blackKeyIndx);
                 GL.IndexPointer(IndexPointerType.Int, 1, 0);
 
-                for (int n = firstNote; n < lastNote; ++n)
+                for (int n = firstNote; n < lastNote; n++)
                 {
                     x1 = (float)x1array[n];
                     wdth = (float)wdtharray[n];
@@ -1976,15 +1768,14 @@ void main()
             }
         }
 
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public void ReloadTrackColors()
         {
             if (NoteColors == null) return;
             var cols = ((SettingsCtrl)SettingsControl).paletteList.GetColors(NoteColors.Length);
 
-            for (int i = 0, NoteColorsLength = NoteColors.Length; i < NoteColorsLength; ++i)
+            for (int i = 0; i < NoteColors.Length; i++)
             {
-                for (int j = 0, EachNoteColorsLength = NoteColors[i].Length; j < EachNoteColorsLength; ++j)
+                for (int j = 0; j < NoteColors[i].Length; j++)
                 {
                     if (NoteColors[i][j].isDefault)
                     {
@@ -1993,25 +1784,8 @@ void main()
                     }
                 }
             }
-            /*int IndexOfI = 0;
-            int IndexOfJ;
-            foreach (var i in NoteColors)
-            {
-                IndexOfJ = 0;
-                foreach (var j in i)
-                {
-                    if (j.isDefault)
-                    {
-                        j.left = cols[(IndexOfI << 5) + (IndexOfJ * 2)];
-                        j.right = cols[(IndexOfI << 5) + (IndexOfJ * 2) + 1];
-                    }
-                    ++IndexOfJ;
-                }
-                ++IndexOfI;
-            }*/
         }
 
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         void FlushNoteBuffer(bool check = true)
         {
             if (noteBuffPos < noteBuffLen && check) return;
@@ -2043,10 +1817,9 @@ void main()
             noteBuffPos = 0;
         }
 
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         bool isBlackNote(int n)
         {
-            n %= 12;
+            n = n % 12;
             return n == 1 || n == 3 || n == 6 || n == 8 || n == 10;
         }
     }

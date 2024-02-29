@@ -1,0 +1,4 @@
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\Release\ClassicRender.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\Release\SettingsCtrl.g.cs
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\Release\ClassicRender_MarkupCompile.cache
+C:\Users\Administrator\Documents\Zenith-MIDI-Modded-master\ClassicRender\obj\Release\ClassicRender_MarkupCompile.lref
